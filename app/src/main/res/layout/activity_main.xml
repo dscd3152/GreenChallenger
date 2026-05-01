@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#EAF3E3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="환영합니다"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2026.04.12 (일)"
+            android:textSize="16sp"
+            android:textColor="#4E5E4E"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/txtPointSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 포인트: 0P"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="28dp" />
+
+        <Button
+            android:id="@+id/btnStartMission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="미션 시작하기"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#43A047"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnAttendance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="출석체크 하기"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#43A047"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnRanking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="랭킹 보기"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#43A047"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnMyPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="마이페이지"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#43A047"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnRewardAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="광고 보고 포인트 받기"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#43A047"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnMyRewards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="내 기프티콘 보관함"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#43A047"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnRewardStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기프티콘 상점" />
+
+    </LinearLayout>
+</ScrollView>

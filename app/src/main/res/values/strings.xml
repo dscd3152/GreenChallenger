@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">Green Challenge</string>
+<string name="mission_title">오늘의 미션</string>
+<string name="mission_detail">일회용품 대신 재사용 용기를 사용해보세요!</string>
+<string name="mission_complete">미션 완료하기</string>
+<string name="my_page">내 포인트 보기</string>
+<string name="camera">사진 촬영하기</string>
+<string name="start_mission">미션 시작하기</string>
+</resources>

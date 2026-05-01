@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "333163999505",
+    "project_id": "greeen-challenger",
+    "storage_bucket": "greeen-challenger.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333163999505:android:83e6e8dc3d1959a40b9cb0",
+        "android_client_info": {
+          "package_name": "com.example.greenchallenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHdcCpMDiaZXnpseDAnserVHXRqIndHts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

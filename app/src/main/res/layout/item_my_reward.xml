@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_marginBottom="12dp"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/imgMyReward"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gifticon_starbucks_001" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/txtMyRewardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스타벅스 아메리카노"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#222222" />
+
+        <TextView
+            android:id="@+id/txtMyRewardDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="테스트용 스타벅스 기프티콘"
+            android:textSize="13sp"
+            android:textColor="#666666"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/txtMyRewardDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="교환일: 2026-04-12 23:10:00"
+            android:textSize="12sp"
+            android:textColor="#444444"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/txtMyRewardStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상태: unused"
+            android:textSize="12sp"
+            android:textColor="#D84315"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnUseReward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용 완료"
+        android:backgroundTint="#43A047"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

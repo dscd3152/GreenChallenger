@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F5E9"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/txtMissionTitle"
+        android:text="미션 제목"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#1B5E20"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/txtMissionDetail"
+        android:text="미션 설명"
+        android:textSize="18sp"
+        android:textColor="#388E3C"
+        android:layout_marginBottom="32dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/btnTakePhoto"
+        android:text="📷 사진 촬영하기"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#43A047"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnCompleteMission"
+        android:text="미션 완료하기"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#81C784"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@drawable/item_background_ranking"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/iconMedal"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_leaf"
+        android:layout_marginEnd="10dp" />
+
+    <TextView
+        android:id="@+id/txtRank"
+        android:text="1위"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#1B5E20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:text="홍길동"
+        android:textSize="18sp"
+        android:textColor="#2E7D32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp" />
+
+
+    <TextView
+        android:id="@+id/txtPoints"
+        android:text="120점"
+        android:textSize="16sp"
+        android:textColor="#388E3C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

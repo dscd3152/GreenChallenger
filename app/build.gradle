@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace "com.example.greenchallenger"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.greenchallenger"
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    // java.time(LocalDate 등) 쓰려고 desugaring 켜줌
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.0'
+    implementation 'com.google.android.material:material:1.12.0'
+
+    // ✅ 우리가 실제로 쓸 캘린더 라이브러리 (kizitonwose)
+    implementation 'com.github.kizitonwose:CalendarView:1.0.4'
+
+    // java.time desugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+
+    // Firebase (그대로 유지)
+    implementation platform('com.google.firebase:firebase-bom:33.1.2')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 기본 색상 (Green Challenge 테마용) -->
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryVariant">#388E3C</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorBackground">#E8F5E9</color>
+    <color name="green_light">#C8E6C9</color> <!-- 클릭 시 연한 녹색 -->
+    <color name="green_dark">#A5D6A7</color>
+
+
+
+
+
+
+
+    <!-- 추가 색상 (Material3 스타일에 맞게 보완) -->
+    <color name="colorSecondary">#66BB6A</color>
+    <color name="colorSecondaryVariant">#81C784</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorError">#D32F2F</color>
+
+    <!-- 이전 오류 방지용 색상 -->
+    <color name="teal_700">#018786</color>
+    <color name="teal_200">#03DAC5</color>
+</resources>
