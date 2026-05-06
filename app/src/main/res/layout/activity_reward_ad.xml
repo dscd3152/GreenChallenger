@@ -2,44 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#F6F8F4"
     android:gravity="center"
-    android:padding="24dp"
-    android:background="#EAF3E3">
+    android:orientation="vertical"
+    android:padding="24dp">
 
-    <TextView
-        android:id="@+id/txtAdTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="광고 보고 포인트 받기"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#2E7D32"
-        android:layout_marginBottom="24dp" />
-
-    <TextView
-        android:id="@+id/txtAdStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="광고를 시청하면 5포인트를 받을 수 있어요"
-        android:textSize="16sp"
-        android:textColor="#4E5E4E"
-        android:gravity="center"
-        android:layout_marginBottom="24dp" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp" />
-
-    <Button
-        android:id="@+id/btnWatchAd"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="광고 시청하기"
-        android:backgroundTint="#43A047"
-        android:textColor="#FFFFFF" />
+        android:background="@drawable/bg_card"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="22dp">
 
+        <TextView
+            android:id="@+id/txtAdTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="광고 보상"
+            android:textColor="#263238"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAdStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="광고 시청 시 +5P / 오늘 남은 횟수: 3회"
+            android:textColor="#6B756B"
+            android:textSize="15sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp" />
+
+        <Button
+            android:id="@+id/btnWatchAd"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_primary_button"
+            android:text="광고 시청하기"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
 </LinearLayout>

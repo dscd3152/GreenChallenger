@@ -17,16 +17,24 @@
         android:layout_marginTop="40dp"
         android:contentDescription="사진 미리보기"
         android:scaleType="centerCrop"
-        android:background="#C8E6C9"
-        android:src="@drawable/ic_leaf" />
+        android:background="#C8E6C9" />
+
+    <Button
+        android:id="@+id/btnRetakePhoto"
+        android:text="다시 촬영하기"
+        android:textColor="#2E7D32"
+        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="20dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
 
     <!-- 업로드 버튼 -->
     <Button
         android:id="@+id/btnUpload"
-        android:text="사진 업로드하기"
+        android:text="사진 인증 완료"
         android:textColor="#FFFFFF"
         android:backgroundTint="#66BB6A"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="12dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content" />
 

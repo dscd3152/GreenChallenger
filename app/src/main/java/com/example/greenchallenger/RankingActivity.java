@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,6 +19,7 @@ import java.util.List;
 public class RankingActivity extends AppCompatActivity {
 
     private RecyclerView recyclerRanking;
+    private Button btnNavHome, btnNavMission, btnNavStore, btnNavMy;
     private RankingAdapter adapter;
     private List<User> users = new ArrayList<>();
 
@@ -29,9 +32,25 @@ public class RankingActivity extends AppCompatActivity {
 
         recyclerRanking = findViewById(R.id.recyclerRanking);
         recyclerRanking.setLayoutManager(new LinearLayoutManager(this));
+        btnNavHome = findViewById(R.id.btnNavHome);
+        btnNavMission = findViewById(R.id.btnNavMission);
+        btnNavStore = findViewById(R.id.btnNavStore);
+        btnNavMy = findViewById(R.id.btnNavMy);
 
         adapter = new RankingAdapter(users);
         recyclerRanking.setAdapter(adapter);
+
+        btnNavHome.setOnClickListener(v ->
+                startActivity(new Intent(RankingActivity.this, MainActivity.class)));
+
+        btnNavMission.setOnClickListener(v ->
+                startActivity(new Intent(RankingActivity.this, MissionActivity.class)));
+
+        btnNavStore.setOnClickListener(v ->
+                startActivity(new Intent(RankingActivity.this, RewardStoreActivity.class)));
+
+        btnNavMy.setOnClickListener(v ->
+                startActivity(new Intent(RankingActivity.this, MyPageActivity.class)));
 
         loadRanking();
     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +19,9 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtWelcome, txtDate, txtPointSummary;
-    private Button btnStartMission, btnMyPage, btnAttendance, btnRanking, btnRewardAd, btnRewardStore, btnMyRewards;
+    private ImageView treeHomeImage;
+    private TextView txtWelcome, txtDate, txtPointSummary, txtGrowthSummary;
+    private Button btnStartMission, btnMyPage, btnAttendance, btnRanking, btnRewardAd, btnRewardStore, btnNavMission;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         txtWelcome = findViewById(R.id.txtWelcome);
         txtDate = findViewById(R.id.txtDate);
         txtPointSummary = findViewById(R.id.txtPointSummary);
+        txtGrowthSummary = findViewById(R.id.txtGrowthSummary);
+        treeHomeImage = findViewById(R.id.treeHomeImage);
 
         btnStartMission = findViewById(R.id.btnStartMission);
         btnMyPage = findViewById(R.id.btnMyPage);
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnRanking = findViewById(R.id.btnRanking);
         btnRewardAd = findViewById(R.id.btnRewardAd);
         btnRewardStore = findViewById(R.id.btnRewardStore);
-        btnMyRewards = findViewById(R.id.btnMyRewards);
+        btnNavMission = findViewById(R.id.btnNavMission);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         loadMainUserInfo();
 
         btnStartMission.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, MissionActivity.class)));
+
+        btnNavMission.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, MissionActivity.class)));
 
         btnMyPage.setOnClickListener(v ->
@@ -66,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnRewardStore.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, RewardStoreActivity.class)));
-
-        btnMyRewards.setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, MyRewardsActivity.class)));
     }
 
     @Override
@@ -95,16 +99,36 @@ public class MainActivity extends AppCompatActivity {
                         User user = documentSnapshot.toObject(User.class);
 
                         if (user != null) {
-                            txtWelcome.setText(user.getNickname() + "님, 환영합니다");
+                            txtWelcome.setText(user.getNickname() + "님,\n오늘도 지구를 가볍게");
                             txtPointSummary.setText(
-                                    "내 포인트: " + user.getEcoPoints() + "P / 출석: " +
-                                            user.getAttendanceCount() + "일"
+                                    user.getEcoPoints() + "P 보유 · 출석 " +
+                                            user.getAttendanceCount() + "일 · 미션 " +
+                                            user.getMissionCompletedCount() + "개"
                             );
+                            updateGrowthView(user.getGrowthStage());
                         }
                     }
                 })
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "메인 정보 불러오기 실패: " + e.getMessage(), Toast.LENGTH_LONG).show()
                 );
+    }
+
+    private void updateGrowthView(int growthStage) {
+        switch (growthStage) {
+            case 1:
+                treeHomeImage.setImageResource(R.drawable.tree_stage1);
+                txtGrowthSummary.setText("씨앗이 자라는 중");
+                break;
+            case 2:
+                treeHomeImage.setImageResource(R.drawable.tree_stage2);
+                txtGrowthSummary.setText("새싹이 커지는 중");
+                break;
+            case 3:
+            default:
+                treeHomeImage.setImageResource(R.drawable.tree_stage3);
+                txtGrowthSummary.setText("나무가 건강하게 성장 중");
+                break;
+        }
     }
 }

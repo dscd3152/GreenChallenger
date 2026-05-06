@@ -1,71 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8F5E9">
+    android:background="#F6F8F4"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="마이페이지"
+                android:textColor="#263238"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:contentDescription="프로필 이미지"
+                    android:src="@drawable/ic_profile_placeholder" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="홍길동"
+                        android:textColor="#263238"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/userEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="green@challenge.com"
+                        android:textColor="#6B756B"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="활동 요약"
+                android:textColor="#263238"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/missionCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card"
+                android:lineSpacingExtra="6dp"
+                android:padding="18dp"
+                android:text="포인트: 0P"
+                android:textColor="#45524A"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnMyRewards"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_primary_button"
+                android:text="내 기프티콘 보관함"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_secondary_button"
+                android:text="내 정보 수정"
+                android:textColor="#2E7D32"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_secondary_button"
+                android:text="로그아웃"
+                android:textColor="#D84315"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="24dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <ImageView
-            android:id="@+id/profileImage"
-            android:src="@drawable/ic_profile_placeholder"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:id="@+id/userName"
-            android:text="홍길동"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#1B5E20"
-            android:layout_marginBottom="4dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            />
-
-        <TextView
-            android:id="@+id/userEmail"
-            android:text="green@challenge.com"
-            android:textSize="16sp"
-            android:textColor="#4CAF50"
-            android:layout_marginBottom="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
-            android:id="@+id/missionCount"
-            android:text="완료한 미션: 3개"
-            android:textSize="16sp"
-            android:textColor="#388E3C"
-            android:layout_marginBottom="24dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            />
+        android:layout_height="64dp"
+        android:background="@drawable/bg_bottom_bar"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp">
 
         <Button
-            android:id="@+id/btnEditProfile"
-            android:text="내 정보 수정"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#43A047"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:id="@+id/btnNavHome"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="홈"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
 
         <Button
-            android:id="@+id/btnLogout"
-            android:text="로그아웃"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#66BB6A"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content" />
+            android:id="@+id/btnNavMission"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="미션"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
 
+        <Button
+            android:id="@+id/btnNavRanking"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="랭킹"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnNavStore"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="상점"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

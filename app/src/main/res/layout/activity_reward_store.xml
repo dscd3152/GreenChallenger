@@ -2,35 +2,90 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#EAF3E3"
-    android:padding="16dp">
+    android:background="#F6F8F4"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtStoreTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="기프티콘 상점"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#2E7D32"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="12dp" />
-
-    <TextView
-        android:id="@+id/txtMyPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="내 포인트: 0P"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#2E7D32"
-        android:layout_marginBottom="16dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerRewards"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="20dp">
 
+        <TextView
+            android:id="@+id/txtStoreTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기프티콘 상점"
+            android:textColor="#263238"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtMyPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:text="내 포인트: 0P"
+            android:textColor="#2E7D32"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRewards"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_bottom_bar"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp">
+
+        <Button
+            android:id="@+id/btnNavHome"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="홈"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnNavMission"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="미션"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnNavRanking"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="랭킹"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnNavMy"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="마이"
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
+    </LinearLayout>
 </LinearLayout>

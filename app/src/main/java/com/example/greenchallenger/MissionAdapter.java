@@ -2,15 +2,8 @@ package com.example.greenchallenger;
 
 import android.view.LayoutInflater;
 import android.view.View;
-
-
-
-
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.greenchallenger.Mission;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,9 +37,8 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.ViewHold
         Mission mission = missionList.get(position);
         holder.missionTitle.setText(mission.getTitle());
 
-        // ✅ 완료된 미션은 체크 표시
         if (mission.isCompleted()) {
-            holder.missionStatus.setText("✔");
+            holder.missionStatus.setText("완료");
         } else {
             holder.missionStatus.setText("");
         }

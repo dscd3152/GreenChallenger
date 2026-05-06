@@ -2,67 +2,71 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="12dp"
     android:layout_marginBottom="12dp"
-    android:background="#FFFFFF">
+    android:background="@drawable/bg_card"
+    android:orientation="horizontal"
+    android:padding="14dp">
 
     <ImageView
         android:id="@+id/imgReward"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:contentDescription="기프티콘 이미지"
         android:scaleType="centerCrop"
         android:src="@drawable/gifticon_starbucks_001" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginStart="12dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtRewardName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="스타벅스 아메리카노"
+            android:textColor="#263238"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#222222" />
-
-        <TextView
-            android:id="@+id/txtRewardCost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10P"
-            android:textSize="14sp"
-            android:textColor="#2E7D32"
-            android:layout_marginTop="4dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtRewardDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="테스트용 스타벅스 기프티콘"
-            android:textSize="13sp"
-            android:textColor="#666666"
-            android:layout_marginTop="4dp" />
+            android:textColor="#6B756B"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/txtRewardCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="30P"
+            android:textColor="#2E7D32"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtRewardStock"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:text="남은 수량: 3개"
-            android:textSize="13sp"
             android:textColor="#D84315"
-            android:layout_marginTop="4dp" />
-    </LinearLayout>
+            android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/btnExchange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="교환"
-        android:backgroundTint="#43A047"
-        android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/btnExchange"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_primary_button"
+            android:text="교환"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
 </LinearLayout>

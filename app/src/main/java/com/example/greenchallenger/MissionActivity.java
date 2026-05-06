@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +21,7 @@ import java.util.List;
 public class MissionActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private Button btnNavHome, btnNavRanking, btnNavStore, btnNavMy;
     private MissionAdapter adapter;
     private List<Mission> missionList;
 
@@ -49,6 +51,10 @@ public class MissionActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.missionRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        btnNavHome = findViewById(R.id.btnNavHome);
+        btnNavRanking = findViewById(R.id.btnNavRanking);
+        btnNavStore = findViewById(R.id.btnNavStore);
+        btnNavMy = findViewById(R.id.btnNavMy);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -68,6 +74,18 @@ public class MissionActivity extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(adapter);
+
+        btnNavHome.setOnClickListener(v ->
+                startActivity(new Intent(MissionActivity.this, MainActivity.class)));
+
+        btnNavRanking.setOnClickListener(v ->
+                startActivity(new Intent(MissionActivity.this, RankingActivity.class)));
+
+        btnNavStore.setOnClickListener(v ->
+                startActivity(new Intent(MissionActivity.this, RewardStoreActivity.class)));
+
+        btnNavMy.setOnClickListener(v ->
+                startActivity(new Intent(MissionActivity.this, MyPageActivity.class)));
 
         loadCompletedMissions();
     }

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ import java.util.Map;
 public class RewardStoreActivity extends AppCompatActivity {
 
     private TextView txtMyPoint;
+    private Button btnNavHome, btnNavMission, btnNavRanking, btnNavMy;
     private RecyclerView recyclerRewards;
 
     private FirebaseAuth auth;
@@ -44,6 +47,10 @@ public class RewardStoreActivity extends AppCompatActivity {
 
         txtMyPoint = findViewById(R.id.txtMyPoint);
         recyclerRewards = findViewById(R.id.recyclerRewards);
+        btnNavHome = findViewById(R.id.btnNavHome);
+        btnNavMission = findViewById(R.id.btnNavMission);
+        btnNavRanking = findViewById(R.id.btnNavRanking);
+        btnNavMy = findViewById(R.id.btnNavMy);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -51,6 +58,18 @@ public class RewardStoreActivity extends AppCompatActivity {
         recyclerRewards.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RewardAdapter(rewardList, this::exchangeReward);
         recyclerRewards.setAdapter(adapter);
+
+        btnNavHome.setOnClickListener(v ->
+                startActivity(new Intent(RewardStoreActivity.this, MainActivity.class)));
+
+        btnNavMission.setOnClickListener(v ->
+                startActivity(new Intent(RewardStoreActivity.this, MissionActivity.class)));
+
+        btnNavRanking.setOnClickListener(v ->
+                startActivity(new Intent(RewardStoreActivity.this, RankingActivity.class)));
+
+        btnNavMy.setOnClickListener(v ->
+                startActivity(new Intent(RewardStoreActivity.this, MyPageActivity.class)));
 
         loadMyPoint();
         seedDefaultRewards();

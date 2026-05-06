@@ -24,6 +24,7 @@ public class MissionDetailActivity extends AppCompatActivity {
     private Button btnCompleteMission, btnTakePhoto;
 
     private boolean isCompleted = false;
+    private String photoUri = "";
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -32,10 +33,14 @@ public class MissionDetailActivity extends AppCompatActivity {
     private final ActivityResultLauncher<Intent> cameraLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    Toast.makeText(this, "📸 사진이 업로드되었습니다. 미션 완료 준비!", Toast.LENGTH_SHORT).show();
+                    if (result.getData() != null) {
+                        photoUri = result.getData().getStringExtra("photoUri");
+                    }
+
+                    Toast.makeText(this, "사진이 인증되었습니다. 미션 완료 준비!", Toast.LENGTH_SHORT).show();
                     isCompleted = true;
                     btnCompleteMission.setEnabled(true);
-                    btnCompleteMission.setText("✅ 미션 완료하기");
+                    btnCompleteMission.setText("미션 완료하기");
                 } else {
                     Toast.makeText(this, "사진 촬영이 취소되었습니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -95,7 +100,7 @@ public class MissionDetailActivity extends AppCompatActivity {
                 missionId,
                 title,
                 today,
-                "",
+                photoUri,
                 10,
                 "completed"
         );
@@ -134,10 +139,11 @@ public class MissionDetailActivity extends AppCompatActivity {
                                                     "growthStage", newGrowthStage
                                             )
                                             .addOnSuccessListener(unused2 -> {
-                                                Toast.makeText(this, "🎉 미션이 완료되었습니다!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(this, "미션이 완료되었습니다!", Toast.LENGTH_SHORT).show();
 
                                                 Intent resultIntent = new Intent();
                                                 resultIntent.putExtra("completedMission", title);
+                                                resultIntent.putExtra("photoUri", photoUri);
                                                 setResult(RESULT_OK, resultIntent);
                                                 finish();
                                             })

@@ -2,25 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6F8F4"
     android:orientation="vertical"
-    android:background="#EAF3E3"
-    android:padding="16dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/txtMyRewardsTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="내 기프티콘 보관함"
+        android:textColor="#263238"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#2E7D32"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="교환한 보상을 확인하고 사용 상태를 관리하세요."
+        android:textColor="#6B756B"
+        android:textSize="14sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMyRewards"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

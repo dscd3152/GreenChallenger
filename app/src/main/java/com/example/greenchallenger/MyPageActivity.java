@@ -17,7 +17,7 @@ public class MyPageActivity extends AppCompatActivity {
 
     private ImageView profileImage;
     private TextView userName, userEmail, missionCount;
-    private Button btnEditProfile, btnLogout;
+    private Button btnEditProfile, btnLogout, btnMyRewards, btnNavHome, btnNavMission, btnNavRanking, btnNavStore;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -33,6 +33,11 @@ public class MyPageActivity extends AppCompatActivity {
         missionCount = findViewById(R.id.missionCount);
         btnEditProfile = findViewById(R.id.btnEditProfile);
         btnLogout = findViewById(R.id.btnLogout);
+        btnMyRewards = findViewById(R.id.btnMyRewards);
+        btnNavHome = findViewById(R.id.btnNavHome);
+        btnNavMission = findViewById(R.id.btnNavMission);
+        btnNavRanking = findViewById(R.id.btnNavRanking);
+        btnNavStore = findViewById(R.id.btnNavStore);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -42,6 +47,21 @@ public class MyPageActivity extends AppCompatActivity {
         btnEditProfile.setOnClickListener(v ->
                 Toast.makeText(this, "프로필 수정 기능은 곧 업데이트됩니다!", Toast.LENGTH_SHORT).show()
         );
+
+        btnMyRewards.setOnClickListener(v ->
+                startActivity(new Intent(MyPageActivity.this, MyRewardsActivity.class)));
+
+        btnNavHome.setOnClickListener(v ->
+                startActivity(new Intent(MyPageActivity.this, MainActivity.class)));
+
+        btnNavMission.setOnClickListener(v ->
+                startActivity(new Intent(MyPageActivity.this, MissionActivity.class)));
+
+        btnNavRanking.setOnClickListener(v ->
+                startActivity(new Intent(MyPageActivity.this, RankingActivity.class)));
+
+        btnNavStore.setOnClickListener(v ->
+                startActivity(new Intent(MyPageActivity.this, RewardStoreActivity.class)));
 
         btnLogout.setOnClickListener(v -> {
             auth.signOut();
@@ -80,14 +100,14 @@ public class MyPageActivity extends AppCompatActivity {
                             String growthText;
                             switch (user.getGrowthStage()) {
                                 case 1:
-                                    growthText = "씨앗 단계 🌱";
+                                    growthText = "씨앗 단계";
                                     break;
                                 case 2:
-                                    growthText = "새싹 단계 🍃";
+                                    growthText = "새싹 단계";
                                     break;
                                 case 3:
                                 default:
-                                    growthText = "나무 단계 🌳";
+                                    growthText = "나무 단계";
                                     break;
                             }
 
