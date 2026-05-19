@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F8F4"
+    android:background="@drawable/bg_app_gradient"
     android:orientation="vertical">
 
     <ScrollView
@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="마이페이지"
-                android:textColor="#263238"
+                android:textColor="@color/text_primary"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/bg_hero_card"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="18dp">
@@ -53,7 +53,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="홍길동"
-                        android:textColor="#263238"
+                        android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="green@challenge.com"
-                        android:textColor="#6B756B"
+                        android:textColor="@color/text_secondary"
                         android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:text="활동 요약"
-                android:textColor="#263238"
+                android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -82,11 +82,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/bg_tip_gradient"
                 android:lineSpacingExtra="6dp"
                 android:padding="18dp"
                 android:text="포인트: 0P"
-                android:textColor="#45524A"
+                android:textColor="@color/text_secondary"
                 android:textSize="15sp" />
 
             <Button
@@ -95,8 +95,20 @@
                 android:layout_height="54dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_primary_button"
+                android:backgroundTint="@null"
                 android:text="내 기프티콘 보관함"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/button_primary_text"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnPointHistory"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_primary_button"
+                android:backgroundTint="@null"
+                android:text="포인트 사용 내역"
+                android:textColor="@color/button_primary_text"
                 android:textSize="15sp" />
 
             <Button
@@ -104,9 +116,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_secondary_button"
+                android:background="@drawable/bg_primary_button"
+                android:backgroundTint="@null"
                 android:text="내 정보 수정"
-                android:textColor="#2E7D32"
+                android:textColor="@color/button_primary_text"
                 android:textSize="15sp" />
 
             <Button
@@ -114,9 +127,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_secondary_button"
+                android:background="@drawable/bg_primary_button"
+                android:backgroundTint="@null"
                 android:text="로그아웃"
-                android:textColor="#D84315"
+                android:textColor="@color/button_primary_text"
                 android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
@@ -136,7 +150,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="홈"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
         <Button
@@ -146,7 +160,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="미션"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
         <Button
@@ -156,7 +170,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="랭킹"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
         <Button
@@ -166,7 +180,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="상점"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
     </LinearLayout>
 </LinearLayout>

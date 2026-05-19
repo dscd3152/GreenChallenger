@@ -18,5 +18,5 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="16sp"
-        android:textColor="#1B5E20"/>
+        android:textColor="@color/text_primary"/>
 </FrameLayout>

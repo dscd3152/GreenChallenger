@@ -25,10 +25,11 @@ public class CameraActivity extends AppCompatActivity {
     private ImageView imagePreview;
     private Button btnUpload, btnRetakePhoto;
     private Uri currentPhotoUri;
+    private File currentPhotoFile;
 
     private final ActivityResultLauncher<Uri> takePictureLauncher =
             registerForActivityResult(new ActivityResultContracts.TakePicture(), isSaved -> {
-                if (isSaved && currentPhotoUri != null) {
+                if ((isSaved || hasSavedPhotoFile()) && currentPhotoUri != null) {
                     imagePreview.setImageURI(currentPhotoUri);
                     btnUpload.setEnabled(true);
                     Toast.makeText(this, "사진이 성공적으로 촬영되었습니다!", Toast.LENGTH_SHORT).show();
@@ -68,6 +69,9 @@ public class CameraActivity extends AppCompatActivity {
             Toast.makeText(this, "사진 인증 완료!", Toast.LENGTH_SHORT).show();
             android.content.Intent resultIntent = new android.content.Intent();
             resultIntent.putExtra("photoUri", currentPhotoUri.toString());
+            if (currentPhotoFile != null) {
+                resultIntent.putExtra("photoPath", currentPhotoFile.getAbsolutePath());
+            }
             setResult(RESULT_OK, resultIntent);
             finish();
         });
@@ -86,11 +90,11 @@ public class CameraActivity extends AppCompatActivity {
 
     private void openCamera() {
         try {
-            File photoFile = createImageFile();
+            currentPhotoFile = createImageFile();
             currentPhotoUri = FileProvider.getUriForFile(
                     this,
                     getPackageName() + ".fileprovider",
-                    photoFile
+                    currentPhotoFile
             );
             takePictureLauncher.launch(currentPhotoUri);
         } catch (IOException e) {
@@ -110,6 +114,10 @@ public class CameraActivity extends AppCompatActivity {
         }
 
         return File.createTempFile(imageFileName, ".jpg", storageDir);
+    }
+
+    private boolean hasSavedPhotoFile() {
+        return currentPhotoFile != null && currentPhotoFile.exists() && currentPhotoFile.length() > 0;
     }
 }
 

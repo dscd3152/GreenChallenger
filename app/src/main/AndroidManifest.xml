@@ -48,6 +48,7 @@
         <activity android:name=".RewardAdActivity" />
         <activity android:name=".RewardStoreActivity" />
         <activity android:name=".MyRewardsActivity" />
+        <activity android:name=".PointHistoryActivity" />
 
 
 

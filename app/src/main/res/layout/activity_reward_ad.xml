@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F8F4"
+    android:background="@color/app_background"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="광고 보상"
-            android:textColor="#263238"
+            android:textColor="@color/text_primary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:text="광고 시청 시 +5P / 오늘 남은 횟수: 3회"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="15sp" />
 
         <ProgressBar
@@ -48,8 +48,9 @@
             android:layout_height="54dp"
             android:layout_marginTop="22dp"
             android:background="@drawable/bg_primary_button"
+            android:backgroundTint="@null"
             android:text="광고 시청하기"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/button_primary_text"
             android:textSize="15sp" />
     </LinearLayout>
 </LinearLayout>

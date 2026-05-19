@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8F5E9"
+    android:background="@color/app_background"
     android:padding="24dp"
     android:gravity="center_horizontal">
 
@@ -12,7 +12,7 @@
         android:text="미션 제목"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#1B5E20"
+        android:textColor="@color/text_primary"
         android:layout_marginBottom="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,26 +22,65 @@
         android:id="@+id/txtMissionDetail"
         android:text="미션 설명"
         android:textSize="18sp"
-        android:textColor="#388E3C"
+        android:textColor="@color/text_secondary"
         android:layout_marginBottom="32dp"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         />
 
-    <Button
-        android:id="@+id/btnTakePhoto"
-        android:text="📷 사진 촬영하기"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#43A047"
+    <LinearLayout
+        android:id="@+id/verificationPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/txtVerificationStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="사진을 촬영하면 AI가 미션 수행 여부를 확인합니다."
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtVerificationReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="아직 검증 전입니다."
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <ProgressBar
+            android:id="@+id/progressVerification"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnTakePhoto"
+        android:text="사진 촬영하기"
+        android:textColor="@color/button_primary_text"
+        android:background="@drawable/bg_primary_button"
+        android:backgroundTint="@null"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
         android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnCompleteMission"
-        android:text="미션 완료하기"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#81C784"
+        android:text="AI 검증 요청하기"
+        android:textColor="@color/button_primary_text"
+        android:background="@drawable/bg_primary_button"
+        android:backgroundTint="@null"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="54dp" />
 </LinearLayout>

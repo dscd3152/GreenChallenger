@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
     <!-- 배경색 -->
-    <solid android:color="#FFFFFF" />
+    <solid android:color="@color/app_surface" />
 
     <!-- 모서리 둥글게 -->
     <corners android:radius="12dp" />
@@ -11,7 +11,7 @@
     <!-- 외곽선 -->
     <stroke
         android:width="1dp"
-        android:color="#DDDDDD" />
+        android:color="@color/app_border" />
 
     <!-- 그림자 느낌 여백 -->
     <padding

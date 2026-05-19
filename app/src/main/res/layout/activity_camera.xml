@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center_horizontal"
-    android:background="#E8F5E9"
+    android:background="@color/app_background"
     tools:context=".CameraActivity">
 
     <!-- 미리보기 이미지 -->
@@ -17,13 +17,14 @@
         android:layout_marginTop="40dp"
         android:contentDescription="사진 미리보기"
         android:scaleType="centerCrop"
-        android:background="#C8E6C9" />
+        android:background="@color/app_surface_tint" />
 
     <Button
         android:id="@+id/btnRetakePhoto"
         android:text="다시 촬영하기"
-        android:textColor="#2E7D32"
-        android:backgroundTint="#FFFFFF"
+        android:textColor="@color/button_secondary_text"
+        android:background="@drawable/bg_secondary_button"
+        android:backgroundTint="@null"
         android:layout_marginTop="20dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content" />
@@ -32,8 +33,9 @@
     <Button
         android:id="@+id/btnUpload"
         android:text="사진 인증 완료"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#66BB6A"
+        android:textColor="@color/button_primary_text"
+        android:background="@drawable/bg_primary_button"
+        android:backgroundTint="@null"
         android:layout_marginTop="12dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content" />
@@ -43,7 +45,7 @@
         android:id="@+id/txtMissionGuide1"
         android:text="📸 사진을 찍고 오늘의 미션을 인증해보세요!"
         android:textSize="16sp"
-        android:textColor="#1B5E20"
+        android:textColor="@color/text_primary"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
         android:id="@+id/txtMissionGuide2"
         android:text="💚 당신의 한 컷이 지구를 미소 짓게 합니다."
         android:textSize="16sp"
-        android:textColor="#388E3C"
+        android:textColor="@color/text_secondary"
         android:layout_marginTop="6dp"
         android:gravity="center"
         android:layout_width="wrap_content"

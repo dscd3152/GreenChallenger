@@ -16,7 +16,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MissionActivity extends AppCompatActivity {
 
@@ -32,15 +35,8 @@ public class MissionActivity extends AppCompatActivity {
     private final ActivityResultLauncher<Intent> missionLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    String completedMission = result.getData().getStringExtra("completedMission");
-
-                    for (Mission mission : missionList) {
-                        if (mission.getTitle().equals(completedMission)) {
-                            mission.setCompleted(true);
-                            adapter.notifyDataSetChanged();
-                            break;
-                        }
-                    }
+                    Toast.makeText(this, "AI 검증이 승인되면 포인트가 지급됩니다.", Toast.LENGTH_SHORT).show();
+                    loadCompletedMissions();
                 }
             });
 
@@ -105,10 +101,18 @@ public class MissionActivity extends AppCompatActivity {
                 .collection("missionHistory")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (Mission mission : missionList) {
+                        mission.setCompleted(false);
+                    }
+
+                    String today = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(new Date());
+
                     for (com.google.firebase.firestore.DocumentSnapshot doc : queryDocumentSnapshots) {
                         String title = doc.getString("title");
+                        String completedAt = doc.getString("completedAt");
+                        String verificationStatus = doc.getString("verificationStatus");
 
-                        if (title != null) {
+                        if (title != null && today.equals(completedAt) && "approved".equals(verificationStatus)) {
                             for (Mission mission : missionList) {
                                 if (mission.getTitle().equals(title)) {
                                     mission.setCompleted(true);

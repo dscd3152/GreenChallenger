@@ -20,7 +20,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView treeHomeImage;
-    private TextView txtWelcome, txtDate, txtPointSummary, txtGrowthSummary;
+    private TextView txtWelcome, txtDate, txtPointSummary, txtGrowthSummary, txtEcoTip;
     private Button btnStartMission, btnMyPage, btnAttendance, btnRanking, btnRewardAd, btnRewardStore, btnNavMission;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         txtDate = findViewById(R.id.txtDate);
         txtPointSummary = findViewById(R.id.txtPointSummary);
         txtGrowthSummary = findViewById(R.id.txtGrowthSummary);
+        txtEcoTip = findViewById(R.id.txtEcoTip);
         treeHomeImage = findViewById(R.id.treeHomeImage);
 
         btnStartMission = findViewById(R.id.btnStartMission);
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         String currentDate = new SimpleDateFormat("yyyy.MM.dd (E)", Locale.KOREA)
                 .format(new Date());
         txtDate.setText(currentDate);
+        setTodayEcoTip();
 
         loadMainUserInfo();
 
@@ -130,5 +132,19 @@ public class MainActivity extends AppCompatActivity {
                 txtGrowthSummary.setText("나무가 건강하게 성장 중");
                 break;
         }
+    }
+
+    private void setTodayEcoTip() {
+        String[] tips = {
+                "텀블러를 챙기면 일회용 컵 사용을 줄일 수 있어요.",
+                "장바구니를 미리 챙기면 비닐봉투 사용을 쉽게 줄일 수 있어요.",
+                "분리배출 전 내용물을 비우고 헹구면 재활용률이 높아져요.",
+                "가까운 거리는 걷거나 자전거를 이용하면 탄소 배출을 줄일 수 있어요.",
+                "사용하지 않는 충전기는 콘센트에서 빼두면 대기전력을 아낄 수 있어요.",
+                "음식은 먹을 만큼만 담으면 음식물 쓰레기를 줄일 수 있어요.",
+                "종이 영수증 대신 모바일 영수증을 선택해보세요."
+        };
+        int dayOfYear = Integer.parseInt(new SimpleDateFormat("D", Locale.KOREA).format(new Date()));
+        txtEcoTip.setText(tips[dayOfYear % tips.length]);
     }
 }

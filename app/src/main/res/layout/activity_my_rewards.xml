@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F8F4"
+    android:background="@color/app_background"
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="내 기프티콘 보관함"
-        android:textColor="#263238"
+        android:textColor="@color/text_primary"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:text="교환한 보상을 확인하고 사용 상태를 관리하세요."
-        android:textColor="#6B756B"
+        android:textColor="@color/text_secondary"
         android:textSize="14sp" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:background="@drawable/bg_card"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_mission_card_premium"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="18dp">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="미션 제목"
-            android:textColor="#263238"
+            android:textColor="@color/text_primary"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="완료 시 10P"
-            android:textColor="#2E7D32"
+            android:textColor="@color/green_primary"
             android:textSize="13sp" />
     </LinearLayout>
 
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textColor="#2E7D32"
+        android:textColor="@color/green_primary"
         android:textSize="15sp"
         android:textStyle="bold" />
 </LinearLayout>

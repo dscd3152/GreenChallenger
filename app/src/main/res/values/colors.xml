@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 기본 색상 (Green Challenge 테마용) -->
-    <color name="colorPrimary">#4CAF50</color>
-    <color name="colorPrimaryVariant">#388E3C</color>
+    <!-- Green Challenger app palette -->
+    <color name="app_background">#F7FAF6</color>
+    <color name="app_surface">#FFFFFF</color>
+    <color name="app_surface_tint">#F1F7F0</color>
+    <color name="app_border">#DCE8D8</color>
+    <color name="text_primary">#1F2D25</color>
+    <color name="text_secondary">#5F6F65</color>
+    <color name="text_muted">#7A897F</color>
+    <color name="green_primary">#007F6D</color>
+    <color name="green_primary_pressed">#006957</color>
+    <color name="green_secondary">#E8F5EF</color>
+    <color name="green_on_secondary">#006B5B</color>
+    <color name="button_disabled">#DDE7E1</color>
+    <color name="button_disabled_text">#8B9A91</color>
+    <color name="warning">#B45309</color>
+    <color name="danger">#C2410C</color>
+    <color name="google_button_text">#202124</color>
+    <color name="google_blue">#4285F4</color>
+    <color name="google_blue_pressed">#3367D6</color>
+    <color name="kakao_yellow">#FEE500</color>
+    <color name="kakao_yellow_pressed">#F6D900</color>
+    <color name="kakao_text">#191919</color>
+    <color name="naver_green">#03C75A</color>
+    <color name="naver_green_pressed">#02B351</color>
+
+    <!-- Legacy theme aliases -->
+    <color name="colorPrimary">#007F6D</color>
+    <color name="colorPrimaryVariant">#006957</color>
     <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorBackground">#E8F5E9</color>
-    <color name="green_light">#C8E6C9</color> <!-- 클릭 시 연한 녹색 -->
-    <color name="green_dark">#A5D6A7</color>
-
-
-
-
-
-
-
-    <!-- 추가 색상 (Material3 스타일에 맞게 보완) -->
-    <color name="colorSecondary">#66BB6A</color>
-    <color name="colorSecondaryVariant">#81C784</color>
+    <color name="colorBackground">#F7FAF6</color>
+    <color name="green_light">#E8F5EF</color>
+    <color name="green_dark">#007F6D</color>
+    <color name="colorSecondary">#E8F5EF</color>
+    <color name="colorSecondaryVariant">#D4EBE3</color>
     <color name="colorSurface">#FFFFFF</color>
-    <color name="colorOnSecondary">#000000</color>
-    <color name="colorError">#D32F2F</color>
+    <color name="colorOnSecondary">#006B5B</color>
+    <color name="colorError">#C2410C</color>
 
-    <!-- 이전 오류 방지용 색상 -->
     <color name="teal_700">#018786</color>
     <color name="teal_200">#03DAC5</color>
 </resources>

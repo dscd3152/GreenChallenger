@@ -1,46 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#EAF7E2">
+    android:background="@drawable/bg_auth_gradient"
+    android:fillViewport="true">
 
-    <TextView
-        android:text="회원가입"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="#2E7D32"
-        android:layout_marginBottom="36dp"/>
-
-    <EditText
-        android:id="@+id/edtRegisterEmail"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="이메일 입력"
-        android:inputType="textEmailAddress"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp">
 
-    <EditText
-        android:id="@+id/edtRegisterPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="비밀번호 입력"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:layout_marginBottom="24dp"/>
+        <TextView
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_auth_logo_circle"
+            android:gravity="center"
+            android:text="GC"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnRegisterSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="회원가입 완료"
-        android:backgroundTint="#4CAF50"
-        android:textColor="#FFFFFF"
-        android:padding="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:text="회원가입"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/edtRegisterEmail"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_input"
+            android:hint="이메일 입력"
+            android:inputType="textEmailAddress"
+            android:padding="14dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_muted" />
+
+        <EditText
+            android:id="@+id/edtRegisterPassword"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input"
+            android:hint="비밀번호 입력"
+            android:inputType="textPassword"
+            android:padding="14dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_muted" />
+
+        <Button
+            android:id="@+id/btnRegisterSubmit"
+            android:layout_width="260dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_primary_button"
+            android:backgroundTint="@null"
+            android:text="이메일로 가입하기"
+            android:textAllCaps="false"
+            android:textColor="@color/button_primary_text" />
+
+        <Button
+            android:id="@+id/btnNaverRegister"
+            android:layout_width="260dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_naver_button"
+            android:backgroundTint="@null"
+            android:drawableStart="@drawable/ic_naver_logo"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:paddingStart="30dp"
+            android:paddingEnd="22dp"
+            android:text="네이버로 가입"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/btnGoogleRegister"
+            android:layout_width="260dp"
+            android:layout_height="46dp"
+            android:background="@drawable/bg_google_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_google_logo_tile">
+
+                <ImageView
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Google"
+                    android:src="@drawable/ic_google_logo" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Sign in with Google"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

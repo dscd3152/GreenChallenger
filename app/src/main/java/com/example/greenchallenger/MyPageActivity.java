@@ -17,7 +17,8 @@ public class MyPageActivity extends AppCompatActivity {
 
     private ImageView profileImage;
     private TextView userName, userEmail, missionCount;
-    private Button btnEditProfile, btnLogout, btnMyRewards, btnNavHome, btnNavMission, btnNavRanking, btnNavStore;
+    private Button btnEditProfile, btnLogout, btnMyRewards, btnPointHistory;
+    private Button btnNavHome, btnNavMission, btnNavRanking, btnNavStore;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -34,6 +35,7 @@ public class MyPageActivity extends AppCompatActivity {
         btnEditProfile = findViewById(R.id.btnEditProfile);
         btnLogout = findViewById(R.id.btnLogout);
         btnMyRewards = findViewById(R.id.btnMyRewards);
+        btnPointHistory = findViewById(R.id.btnPointHistory);
         btnNavHome = findViewById(R.id.btnNavHome);
         btnNavMission = findViewById(R.id.btnNavMission);
         btnNavRanking = findViewById(R.id.btnNavRanking);
@@ -50,6 +52,9 @@ public class MyPageActivity extends AppCompatActivity {
 
         btnMyRewards.setOnClickListener(v ->
                 startActivity(new Intent(MyPageActivity.this, MyRewardsActivity.class)));
+
+        btnPointHistory.setOnClickListener(v ->
+                startActivity(new Intent(MyPageActivity.this, PointHistoryActivity.class)));
 
         btnNavHome.setOnClickListener(v ->
                 startActivity(new Intent(MyPageActivity.this, MainActivity.class)));

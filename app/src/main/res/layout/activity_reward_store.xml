@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F8F4"
+    android:background="@drawable/bg_app_gradient"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="기프티콘 상점"
-            android:textColor="#263238"
+            android:textColor="@color/text_primary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -26,10 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_card"
+            android:background="@drawable/bg_tip_gradient"
             android:padding="16dp"
             android:text="내 포인트: 0P"
-            android:textColor="#2E7D32"
+            android:textColor="@color/green_primary"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="홈"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
         <Button
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="미션"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
         <Button
@@ -75,7 +75,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="랭킹"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
         <Button
@@ -85,7 +85,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="마이"
-            android:textColor="#6B756B"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
     </LinearLayout>
 </LinearLayout>
