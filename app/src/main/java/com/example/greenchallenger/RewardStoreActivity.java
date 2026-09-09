@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +25,9 @@ import java.util.Map;
 
 public class RewardStoreActivity extends AppCompatActivity {
 
+    private static final int DEMO_STOCK_VERSION = 2;
+
     private TextView txtMyPoint;
-    private Button btnNavHome, btnNavMission, btnNavRanking, btnNavMy;
     private RecyclerView recyclerRewards;
 
     private FirebaseAuth auth;
@@ -47,29 +46,14 @@ public class RewardStoreActivity extends AppCompatActivity {
 
         txtMyPoint = findViewById(R.id.txtMyPoint);
         recyclerRewards = findViewById(R.id.recyclerRewards);
-        btnNavHome = findViewById(R.id.btnNavHome);
-        btnNavMission = findViewById(R.id.btnNavMission);
-        btnNavRanking = findViewById(R.id.btnNavRanking);
-        btnNavMy = findViewById(R.id.btnNavMy);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        NavHelper.setup(this, NavHelper.MY);
 
         recyclerRewards.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RewardAdapter(rewardList, this::exchangeReward);
         recyclerRewards.setAdapter(adapter);
-
-        btnNavHome.setOnClickListener(v ->
-                startActivity(new Intent(RewardStoreActivity.this, MainActivity.class)));
-
-        btnNavMission.setOnClickListener(v ->
-                startActivity(new Intent(RewardStoreActivity.this, MissionActivity.class)));
-
-        btnNavRanking.setOnClickListener(v ->
-                startActivity(new Intent(RewardStoreActivity.this, RankingActivity.class)));
-
-        btnNavMy.setOnClickListener(v ->
-                startActivity(new Intent(RewardStoreActivity.this, MyPageActivity.class)));
 
         loadMyPoint();
         seedDefaultRewards();
@@ -86,7 +70,7 @@ public class RewardStoreActivity extends AppCompatActivity {
         FirebaseUser currentUser = auth.getCurrentUser();
 
         if (currentUser == null) {
-            Toast.makeText(this, "로그인된 사용자가 없습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -132,7 +116,7 @@ public class RewardStoreActivity extends AppCompatActivity {
         rewardRef.get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        loadRewards();
+                        restoreDemoStockIfNeeded(documentSnapshot.getLong("demoStockVersion"));
                         return;
                     }
 
@@ -145,6 +129,7 @@ public class RewardStoreActivity extends AppCompatActivity {
                     reward.put("isActive", true);
                     reward.put("stockCount", 3);
                     reward.put("thumbnailImageName", "gifticon_starbucks_001");
+                    reward.put("demoStockVersion", DEMO_STOCK_VERSION);
                     batch.set(rewardRef, reward);
 
                     addStock(batch, "stock_starbucks_001", "gifticon_starbucks_001");
@@ -162,6 +147,34 @@ public class RewardStoreActivity extends AppCompatActivity {
                 );
     }
 
+    private void restoreDemoStockIfNeeded(Long currentVersionValue) {
+        int currentVersion = currentVersionValue != null ? currentVersionValue.intValue() : 0;
+        if (currentVersion >= DEMO_STOCK_VERSION) {
+            loadRewards();
+            return;
+        }
+
+        WriteBatch batch = db.batch();
+        DocumentReference rewardRef = db.collection("rewards").document("reward_starbucks");
+        batch.update(rewardRef,
+                "stockCount", 3,
+                "isActive", true,
+                "demoStockVersion", DEMO_STOCK_VERSION);
+        addStock(batch, "stock_starbucks_001", "gifticon_starbucks_001");
+        addStock(batch, "stock_starbucks_002", "gifticon_starbucks_002");
+        addStock(batch, "stock_starbucks_003", "gifticon_starbucks_003");
+
+        batch.commit()
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(this, "테스트용 기프티콘 재고 3개가 충전되었습니다.", Toast.LENGTH_SHORT).show();
+                    loadRewards();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "테스트 재고 충전 실패: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    loadRewards();
+                });
+    }
+
     private void addStock(WriteBatch batch, String stockId, String imageName) {
         Map<String, Object> stock = new HashMap<>();
         stock.put("rewardId", "reward_starbucks");
@@ -174,7 +187,7 @@ public class RewardStoreActivity extends AppCompatActivity {
         FirebaseUser currentUser = auth.getCurrentUser();
 
         if (currentUser == null) {
-            Toast.makeText(this, "로그인된 사용자가 없습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -194,10 +207,7 @@ public class RewardStoreActivity extends AppCompatActivity {
         }
 
         String uid = currentUser.getUid();
-        String redeemedAt = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss",
-                Locale.KOREA
-        ).format(new Date());
+        String redeemedAt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA).format(new Date());
 
         isExchanging = true;
 

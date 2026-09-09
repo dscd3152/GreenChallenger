@@ -11,7 +11,11 @@
         android:id="@+id/imgMyReward"
         android:layout_width="92dp"
         android:layout_height="92dp"
-        android:contentDescription="보관함 기프티콘 이미지"
+        android:background="@drawable/bg_soft_chip"
+        android:clickable="true"
+        android:contentDescription="기프티콘 크게 보기"
+        android:focusable="true"
+        android:padding="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/gifticon_starbucks_001" />
 
@@ -60,13 +64,18 @@
 
         <Button
             android:id="@+id/btnUseReward"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_width="104dp"
+            android:layout_height="38dp"
+            android:layout_gravity="end"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_primary_button"
             android:backgroundTint="@null"
+            android:minWidth="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             android:text="사용 완료"
-            android:textColor="@color/button_primary_text"
-            android:textSize="14sp" />
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

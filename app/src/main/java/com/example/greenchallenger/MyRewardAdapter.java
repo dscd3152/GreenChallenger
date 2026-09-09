@@ -14,15 +14,17 @@ import java.util.List;
 
 public class MyRewardAdapter extends RecyclerView.Adapter<MyRewardAdapter.ViewHolder> {
 
-    public interface OnUseClickListener {
+    public interface Listener {
         void onUseClick(String documentId, MyRewardItem rewardItem);
+
+        void onPreviewClick(MyRewardItem rewardItem);
     }
 
     private final List<MyRewardItem> rewardList;
     private final List<String> documentIds;
-    private final OnUseClickListener listener;
+    private final Listener listener;
 
-    public MyRewardAdapter(List<MyRewardItem> rewardList, List<String> documentIds, OnUseClickListener listener) {
+    public MyRewardAdapter(List<MyRewardItem> rewardList, List<String> documentIds, Listener listener) {
         this.rewardList = rewardList;
         this.documentIds = documentIds;
         this.listener = listener;
@@ -59,6 +61,8 @@ public class MyRewardAdapter extends RecyclerView.Adapter<MyRewardAdapter.ViewHo
         holder.btnUseReward.setText(canUse ? "사용 완료" : "사용됨");
 
         holder.btnUseReward.setOnClickListener(v -> listener.onUseClick(documentId, reward));
+        holder.imgReward.setOnClickListener(v -> listener.onPreviewClick(reward));
+        holder.itemView.setOnClickListener(v -> listener.onPreviewClick(reward));
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.example.greenchallenger;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,24 +71,22 @@ public class AttendanceActivity extends AppCompatActivity {
 
         materialCalendar.setDayBinder(new DayBinder<DayViewContainer>() {
             @Override
-            public DayViewContainer create(android.view.View view) {
+            public DayViewContainer create(View view) {
                 return new DayViewContainer(view);
             }
 
             @Override
             public void bind(DayViewContainer container, CalendarDay day) {
                 LocalDate date = day.getDate();
+                boolean isCurrentMonth = day.getOwner() == DayOwner.THIS_MONTH;
+                boolean isAttended = attendanceDates.contains(date);
+
                 container.dayText.setText(String.valueOf(date.getDayOfMonth()));
-
-                // 이번 달 아닌 날짜는 흐리게
-                container.dayText.setAlpha(day.getOwner() == DayOwner.THIS_MONTH ? 1f : 0.3f);
-
-                // 출석 여부 표시
-                container.checkIcon.setVisibility(
-                        attendanceDates.contains(date) ? android.view.View.VISIBLE : android.view.View.GONE
-                );
-
-                // 날짜 클릭 시 출석 처리
+                container.dayText.setAlpha(isCurrentMonth ? 1f : 0.35f);
+                container.dayText.setBackgroundResource(isAttended ? R.drawable.bg_attendance_day_checked : android.R.color.transparent);
+                container.dayText.setTextColor(getResources().getColor(isAttended ? android.R.color.white : R.color.text_primary));
+                container.checkIcon.setVisibility(isAttended ? View.VISIBLE : View.GONE);
+                container.itemView.setAlpha(isCurrentMonth ? 1f : 0.45f);
                 container.itemView.setOnClickListener(v -> handleAttendance(date));
             }
         });
@@ -97,14 +96,12 @@ public class AttendanceActivity extends AppCompatActivity {
         FirebaseUser currentUser = auth.getCurrentUser();
 
         if (currentUser == null) {
-            Toast.makeText(this, "로그인된 사용자가 없습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String uid = currentUser.getUid();
-
         db.collection("users")
-                .document(uid)
+                .document(currentUser.getUid())
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
@@ -127,15 +124,14 @@ public class AttendanceActivity extends AppCompatActivity {
         FirebaseUser currentUser = auth.getCurrentUser();
 
         if (currentUser == null) {
-            Toast.makeText(this, "로그인된 사용자가 없습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String uid = currentUser.getUid();
         attendanceDates.clear();
 
         db.collection("users")
-                .document(uid)
+                .document(currentUser.getUid())
                 .collection("attendance")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -146,7 +142,6 @@ public class AttendanceActivity extends AppCompatActivity {
                         }
                     }
 
-                    // 캘린더 다시 그리기
                     materialCalendar.notifyCalendarChanged();
                 })
                 .addOnFailureListener(e ->
@@ -157,49 +152,36 @@ public class AttendanceActivity extends AppCompatActivity {
     private void handleAttendance(LocalDate date) {
         LocalDate today = LocalDate.now();
 
-        // 오늘만 출석 가능
         if (!date.equals(today)) {
-            Toast.makeText(this, "오늘 날짜만 출석할 수 있어요 😊", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "오늘 날짜만 출석할 수 있어요.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // 이미 출석한 경우
         if (attendanceDates.contains(date)) {
-            Toast.makeText(this, "이미 출석했어요 😊", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "이미 오늘 출석했어요.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         FirebaseUser currentUser = auth.getCurrentUser();
 
         if (currentUser == null) {
-            Toast.makeText(this, "로그인된 사용자가 없습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         String uid = currentUser.getUid();
         String dateKey = date.toString();
-
         AttendanceRecord record = new AttendanceRecord(dateKey, 1);
 
-        // 1) 출석 기록 저장
         db.collection("users")
                 .document(uid)
                 .collection("attendance")
                 .document(dateKey)
                 .set(record)
                 .addOnSuccessListener(unused -> {
-                    // 2) 사용자 포인트 / 출석 수 업데이트
                     int newEcoPoints = ecoPoints + 1;
                     int newAttendanceCount = attendanceCount + 1;
-
-                    int newGrowthStage;
-                    if (newEcoPoints < 3) {
-                        newGrowthStage = 1;
-                    } else if (newEcoPoints < 7) {
-                        newGrowthStage = 2;
-                    } else {
-                        newGrowthStage = 3;
-                    }
+                    int newGrowthStage = GrowthPolicy.getGrowthStage(newEcoPoints);
 
                     db.collection("users")
                             .document(uid)
@@ -218,7 +200,7 @@ public class AttendanceActivity extends AppCompatActivity {
                                 updateTreeGrowth();
                                 updateStatusText();
 
-                                Toast.makeText(this, "출석 완료! 🌿", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "출석 완료! +1P", Toast.LENGTH_SHORT).show();
                             })
                             .addOnFailureListener(e ->
                                     Toast.makeText(this, "포인트 업데이트 실패: " + e.getMessage(), Toast.LENGTH_LONG).show()
@@ -230,16 +212,15 @@ public class AttendanceActivity extends AppCompatActivity {
     }
 
     private void updateTreeGrowth() {
-        if (ecoPoints < 3) {
+        int growthStage = GrowthPolicy.getGrowthStage(ecoPoints);
+        if (growthStage == 1) {
             treeImage.setImageResource(R.drawable.tree_stage1);
-            treeStatus.setText("씨앗이 자라고 있어요 🌱");
-        } else if (ecoPoints < 7) {
+        } else if (growthStage == 2) {
             treeImage.setImageResource(R.drawable.tree_stage2);
-            treeStatus.setText("잎이 무성해지고 있어요 🍃");
         } else {
             treeImage.setImageResource(R.drawable.tree_stage3);
-            treeStatus.setText("나무가 크게 자랐어요 🌳");
         }
+        treeStatus.setText(GrowthPolicy.getGrowthStatusText(ecoPoints));
     }
 
     private void updateStatusText() {
@@ -249,9 +230,9 @@ public class AttendanceActivity extends AppCompatActivity {
     public static class DayViewContainer extends ViewContainer {
         TextView dayText;
         ImageView checkIcon;
-        android.view.View itemView;
+        View itemView;
 
-        public DayViewContainer(android.view.View view) {
+        public DayViewContainer(View view) {
             super(view);
             itemView = view;
             dayText = view.findViewById(R.id.dayText);

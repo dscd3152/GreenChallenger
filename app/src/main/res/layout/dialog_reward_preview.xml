@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_panel"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/txtRewardPreviewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="기프티콘"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtRewardPreviewStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="사용 가능"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/imgRewardPreview"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="기프티콘 원본 이미지"
+        android:scaleType="fitCenter" />
+
+    <Button
+        android:id="@+id/btnCloseRewardPreview"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_primary_button"
+        android:backgroundTint="@null"
+        android:text="닫기"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+</LinearLayout>

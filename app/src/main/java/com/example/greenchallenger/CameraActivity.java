@@ -66,7 +66,7 @@ public class CameraActivity extends AppCompatActivity {
                 return;
             }
 
-            Toast.makeText(this, "사진 인증 완료!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "촬영한 사진을 제출했습니다. AI 검증을 요청해주세요.", Toast.LENGTH_SHORT).show();
             android.content.Intent resultIntent = new android.content.Intent();
             resultIntent.putExtra("photoUri", currentPhotoUri.toString());
             if (currentPhotoFile != null) {

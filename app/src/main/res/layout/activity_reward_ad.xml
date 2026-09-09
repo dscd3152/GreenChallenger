@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background"
+    android:background="@drawable/bg_app_gradient"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="광고 시청 시 +5P / 오늘 남은 횟수: 3회"
+            android:lineSpacingExtra="4dp"
+            android:text="광고 시청 시 +5P\n오늘 남은 횟수: 3회"
             android:textColor="@color/text_secondary"
             android:textSize="15sp" />
 
@@ -50,7 +51,8 @@
             android:background="@drawable/bg_primary_button"
             android:backgroundTint="@null"
             android:text="광고 시청하기"
-            android:textColor="@color/button_primary_text"
-            android:textSize="15sp" />
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

@@ -1,10 +1,16 @@
 package com.example.greenchallenger;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,7 +42,17 @@ public class MyRewardsActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         recyclerMyRewards.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyRewardAdapter(myRewardList, documentIds, this::markRewardAsUsed);
+        adapter = new MyRewardAdapter(myRewardList, documentIds, new MyRewardAdapter.Listener() {
+            @Override
+            public void onUseClick(String documentId, MyRewardItem rewardItem) {
+                markRewardAsUsed(documentId, rewardItem);
+            }
+
+            @Override
+            public void onPreviewClick(MyRewardItem rewardItem) {
+                showRewardPreview(rewardItem);
+            }
+        });
         recyclerMyRewards.setAdapter(adapter);
 
         loadMyRewards();
@@ -112,5 +128,28 @@ public class MyRewardsActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "상태 변경 실패: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
+    }
+
+    private void showRewardPreview(MyRewardItem rewardItem) {
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_reward_preview, null);
+        TextView txtName = view.findViewById(R.id.txtRewardPreviewName);
+        TextView txtStatus = view.findViewById(R.id.txtRewardPreviewStatus);
+        ImageView imgPreview = view.findViewById(R.id.imgRewardPreview);
+        Button btnClose = view.findViewById(R.id.btnCloseRewardPreview);
+
+        txtName.setText(rewardItem.getName());
+        txtStatus.setText("unused".equals(rewardItem.getStatus()) ? "사용 가능한 기프티콘" : "사용 완료된 기프티콘");
+
+        int imageResId = getResources().getIdentifier(
+                rewardItem.getImageName(), "drawable", getPackageName());
+        if (imageResId != 0) {
+            imgPreview.setImageResource(imageResId);
+        }
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        btnClose.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
     }
 }

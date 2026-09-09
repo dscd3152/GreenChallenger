@@ -107,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setupGoogleSignIn() {
         GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.google_web_client_id))
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, options);
@@ -160,7 +160,9 @@ public class LoginActivity extends AppCompatActivity {
         user.put("attendanceCount", 0);
         user.put("missionCompletedCount", 0);
         user.put("friendCount", 0);
-        user.put("profileImageUrl", profileImageUrl != null ? profileImageUrl : "");
+        user.put("profileImageUrl", profileImageUrl != null && !profileImageUrl.trim().isEmpty() ? profileImageUrl : "default");
+        user.put("bio", "");
+        user.put("interests", java.util.Collections.emptyList());
         user.put("loginProvider", provider);
 
         db.collection("users")

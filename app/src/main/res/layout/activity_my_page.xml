@@ -36,9 +36,10 @@
 
                 <ImageView
                     android:id="@+id/profileImage"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
                     android:contentDescription="프로필 이미지"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_profile_placeholder" />
 
                 <LinearLayout
@@ -52,7 +53,7 @@
                         android:id="@+id/userName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="홍길동"
+                        android:text="그린챌린저"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -65,8 +66,29 @@
                         android:text="green@challenge.com"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtBio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="자기소개를 입력해보세요."
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtInterests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_soft_chip"
+                android:padding="14dp"
+                android:text="관심 분야: 아직 선택하지 않음"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,8 +119,9 @@
                 android:background="@drawable/bg_primary_button"
                 android:backgroundTint="@null"
                 android:text="내 기프티콘 보관함"
-                android:textColor="@color/button_primary_text"
-                android:textSize="15sp" />
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnPointHistory"
@@ -108,8 +131,9 @@
                 android:background="@drawable/bg_primary_button"
                 android:backgroundTint="@null"
                 android:text="포인트 사용 내역"
-                android:textColor="@color/button_primary_text"
-                android:textSize="15sp" />
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnEditProfile"
@@ -119,68 +143,23 @@
                 android:background="@drawable/bg_primary_button"
                 android:backgroundTint="@null"
                 android:text="내 정보 수정"
-                android:textColor="@color/button_primary_text"
-                android:textSize="15sp" />
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_primary_button"
+                android:background="@drawable/bg_secondary_button"
                 android:backgroundTint="@null"
                 android:text="로그아웃"
-                android:textColor="@color/button_primary_text"
-                android:textSize="15sp" />
+                android:textColor="@color/danger"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@drawable/bg_bottom_bar"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="8dp">
-
-        <Button
-            android:id="@+id/btnNavHome"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="홈"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp" />
-
-        <Button
-            android:id="@+id/btnNavMission"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="미션"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp" />
-
-        <Button
-            android:id="@+id/btnNavRanking"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="랭킹"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp" />
-
-        <Button
-            android:id="@+id/btnNavStore"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:text="상점"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp" />
-    </LinearLayout>
+    <include layout="@layout/common_bottom_nav" />
 </LinearLayout>

@@ -36,13 +36,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Mission mission = missionList.get(position);
         holder.missionTitle.setText(mission.getTitle());
-
-        if (mission.isCompleted()) {
-            holder.missionStatus.setText("완료");
-        } else {
-            holder.missionStatus.setText("");
-        }
-
+        holder.missionStatus.setText(mission.isCompleted() ? "완료" : "");
         holder.itemView.setOnClickListener(v -> listener.onMissionClick(mission));
     }
 

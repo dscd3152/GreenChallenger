@@ -14,25 +14,22 @@
         android:paddingStart="28dp"
         android:paddingEnd="28dp">
 
-        <TextView
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_marginBottom="12dp"
-            android:background="@drawable/bg_auth_logo_circle"
-            android:gravity="center"
-            android:text="GC"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="14dp"
+            android:contentDescription="Green Challenger"
+            android:scaleType="fitCenter"
+            android:src="@drawable/brand_icon" />
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="34dp"
-            android:text="GreenChallenge"
+            android:layout_marginBottom="30dp"
+            android:text="Green Challenger"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <Button
@@ -144,7 +141,8 @@
                 android:backgroundTint="@null"
                 android:text="로그인"
                 android:textAllCaps="false"
-                android:textColor="@color/button_primary_text" />
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <Button
@@ -156,14 +154,14 @@
             android:backgroundTint="@null"
             android:text="이메일 회원가입"
             android:textAllCaps="false"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이미 계정이 있으신가요?"
+            android:text="친환경 습관을 게임처럼 시작해보세요"
             android:textColor="#DFFFFFFF"
             android:textSize="12sp" />
-
     </LinearLayout>
 </ScrollView>

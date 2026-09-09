@@ -1,11 +1,16 @@
 package com.example.greenchallenger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String uid;
     private String nickname;
     private int ecoPoints;
     private int growthStage;
     private String profileImageUrl;
+    private String bio;
+    private List<String> interests;
     private String email;
     private int attendanceCount;
     private int missionCompletedCount;
@@ -58,6 +63,14 @@ public class User {
         return profileImageUrl;
     }
 
+    public String getBio() {
+        return bio;
+    }
+
+    public List<String> getInterests() {
+        return interests != null ? interests : new ArrayList<>();
+    }
+
     public String getEmail() {
         return email;
     }
@@ -92,6 +105,14 @@ public class User {
 
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public void setInterests(List<String> interests) {
+        this.interests = interests;
     }
 
     public void setEmail(String email) {

@@ -13,6 +13,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText edtEmail, edtPassword;
@@ -85,8 +87,10 @@ public class RegisterActivity extends AppCompatActivity {
                             0,
                             0,
                             0,
-                            ""
+                            "default"
                     );
+                    user.setBio("");
+                    user.setInterests(new ArrayList<>());
 
                     db.collection("users")
                             .document(uid)

@@ -39,6 +39,13 @@
         </activity>
 
         <activity android:name=".RankingActivity" />
+        <activity android:name=".FriendsActivity" />
+        <activity android:name=".FriendProfileActivity" />
+        <activity android:name=".CommunityActivity" />
+        <activity android:name=".CreatePostActivity" />
+        <activity android:name=".CommunityDetailActivity" />
+        <activity android:name=".ChatListActivity" />
+        <activity android:name=".ChatActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".MissionActivity" />

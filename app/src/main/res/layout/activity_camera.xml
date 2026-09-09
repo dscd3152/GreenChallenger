@@ -32,7 +32,7 @@
     <!-- 업로드 버튼 -->
     <Button
         android:id="@+id/btnUpload"
-        android:text="사진 인증 완료"
+        android:text="이 사진 제출하기"
         android:textColor="@color/button_primary_text"
         android:background="@drawable/bg_primary_button"
         android:backgroundTint="@null"

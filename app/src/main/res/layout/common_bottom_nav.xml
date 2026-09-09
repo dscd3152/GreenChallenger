@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="@drawable/bg_bottom_bar"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp">
+
+    <ImageButton
+        android:id="@+id/navHome"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:contentDescription="홈"
+        android:padding="12dp"
+        android:src="@drawable/ic_nav_home" />
+
+    <ImageButton
+        android:id="@+id/navMission"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:contentDescription="미션"
+        android:padding="12dp"
+        android:src="@drawable/ic_nav_mission" />
+
+    <ImageButton
+        android:id="@+id/navFriends"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:contentDescription="친구"
+        android:padding="12dp"
+        android:src="@drawable/ic_nav_friends" />
+
+    <ImageButton
+        android:id="@+id/navCommunity"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:contentDescription="커뮤니티"
+        android:padding="12dp"
+        android:src="@drawable/ic_nav_community" />
+
+    <ImageButton
+        android:id="@+id/navMy"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:contentDescription="마이페이지"
+        android:padding="12dp"
+        android:src="@drawable/ic_nav_my" />
+</LinearLayout>
